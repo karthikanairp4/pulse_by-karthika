@@ -1,0 +1,55 @@
+<%- include('includes/head', { pageTitle: 'New Blogs | Pulse Blogs', pageStyle: 'newblog.css' }) %>
+<%- include('includes/navigation') %>
+
+<main class="new-blogs-container">
+  <h1>New Blogs</h1>
+  
+  <% if (blogs && blogs.length > 0) { %>
+    <div class="blogs-list">
+      <% blogs.forEach(blog => { %>
+        <article class="blog">
+          <h2><%= blog.title %></h2>
+          <p><%= blog.content %></p>
+          <div class="meta">
+            <!-- <span>By <strong><%= blog.author %></strong></span> -->
+            <span>On <%= new Date(blog.date).toLocaleDateString() %></span>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p>No blogs have been posted yet. Be the first to write one!</p>
+  <% } %>
+</main>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdownButtons = document.querySelectorAll('.dropbtn');
+
+    dropdownButtons.forEach((button) => {
+      button.addEventListener('click', (event) => {
+        const dropdown = event.currentTarget.nextElementSibling;
+
+        // Toggle visibility of the current dropdown
+        dropdown.classList.toggle('visible');
+
+        // Close other dropdowns
+        document.querySelectorAll('.dropdown-content').forEach((content) => {
+          if (content !== dropdown) {
+            content.classList.remove('visible');
+          }
+        });
+
+        event.stopPropagation();
+      });
+    });
+
+    // Close dropdown if clicking outside
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.dropdown-content').forEach((content) => {
+        content.classList.remove('visible');
+      });
+    });
+  });
+</script>
+
+<!-- <%- include('includes/end') %> -->

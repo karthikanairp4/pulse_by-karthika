@@ -1,0 +1,30 @@
+<header>
+    <div class="top_nav">
+        <div class="logo">
+            <a href="/">pulse</a>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown(event)">Blogs</button>
+            <div class="dropdown-content">
+                <a href="/">All</a>
+                <a href="/category/health">Health</a>
+                <a href="/category/design">Design</a>
+                <a href="/category/tech">Technology</a>
+                <a href="/category/climate">Climate</a>
+                <a href="/category/sports">Sports</a>
+            </div>
+        </div>
+        <div class="middle">
+            <input type="text" placeholder="Search..." class="searchbar">
+        </div>
+        <div class="end">
+            <% if (isLoggedIn) { %>
+                <a href="/write" title="Write Blog"><i class="fa fa-pencil-alt"></i>Write</a>
+                <a href="/blogs/new">New Blogs</a>
+                <a href="/user/logout">Logout</a>
+            <% } else { %>
+                <a href="/user/signin">Sign in/sign up</a>
+            <% } %>
+        </div>
+    </div>
+</header>
