@@ -10,12 +10,15 @@ const categoryRoutes = require('./routes/categoryRoutes');
 
 const app = express();
 
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(
   session({
-    secret: 'your-secret-key',
+    secret: '123456789',
     resave: false,
     saveUninitialized: true,
   })
