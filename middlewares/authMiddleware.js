@@ -5,7 +5,7 @@ const JWT_SECRET = '123456789';
 
 // Middleware to verify JWT token
 const verifyToken = (req, res, next) => {
-    const token = req.cookies.authToken; // Extract token from cookies
+    const token = req.cookies.token; // Extract token from cookies
 
     if (!token) {
         return res.redirect('/user/signin'); // Redirect if no token
