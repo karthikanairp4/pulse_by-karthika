@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = '123456789';
+const JWT_SECRET = process.env.JWT_SECRET || '123456789';
 
 exports.getSignInPage = (req, res) => {
     res.render('signin', { error: null });
